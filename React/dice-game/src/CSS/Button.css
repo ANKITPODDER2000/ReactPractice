@@ -1,0 +1,24 @@
+.btn-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-container .btn{
+    position: relative;
+    padding: 15px 0px;
+    width: 200px;
+    text-align: center;
+    background-color: #0005;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.5s;
+    border: none;
+}
+.btn-container .btn:hover{
+    background-color: #0007;
+}
+.btn-container .btn.is-active{
+    background-color: #000;
+}
