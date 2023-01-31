@@ -1,0 +1,29 @@
+.container{
+    position: relative;
+    background-color: #0001;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+.container .card-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+p.group-name {
+    text-align: center;
+    font-size: 26px;
+    
+}
+p.group-name.loss{
+    color: rgb(255, 0, 119);
+}
+p.group-name.win{
+    color: rgb(7, 132, 0);
+}
+p.exp {
+    text-align: center;
+    margin-top: 5px;
+}
