@@ -1,0 +1,13 @@
+.lottery-container{
+    position: relative;
+    width: 600px;
+    padding: 30px 20px;
+    margin: 20px 0;
+    box-shadow: 2px 2px 20px #0003;
+    border-radius: 10px;
+}
+.lottery-container p.title{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 22px;
+}
