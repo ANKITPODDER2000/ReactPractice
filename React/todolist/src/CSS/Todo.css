@@ -1,0 +1,35 @@
+.todo-container {
+    position: relative;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 10px;
+    align-items: center;
+}
+.todo-container:nth-child(odd){
+    background-color: #0001;
+}
+
+.todo-container p.todo-title {
+    font-size: 16px;
+}
+.todo-container div.todoicon-container{
+    position: relative;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo-container div.todoicon-container i{
+    display: block;
+    padding: 0 7px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #fff7;
+    transform: 0.5s;
+}
+.todo-container div.todoicon-container i:hover{
+    color: #fff;
+}
