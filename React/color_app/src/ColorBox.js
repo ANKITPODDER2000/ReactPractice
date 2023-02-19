@@ -5,8 +5,12 @@ import './css/ColorBox.css'
 class ColorBox extends Component {
   render() {
     return (
-      <div className='color-box' style={{backgroundColor:this.props.color}}>
-        <p>{this.props.name}</p>
+      <div className='color-box' style={{backgroundColor: this.props.color}}>
+        <div className='copy-container'>
+          <p className='copy'>Copy</p>
+          <p className='color-name'>{this.props.name}</p>
+          <p className='more'>More</p>
+        </div>
       </div>
     )
   }
