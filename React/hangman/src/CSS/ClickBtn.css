@@ -1,0 +1,45 @@
+.btn-container{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    display: block;
+    background-color: rgba(75, 36, 78, 0.203);
+    margin: 10px;
+}
+.btn-container button {
+    border: none;
+    outline: none;
+    background: none;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    transition: 0.5s;
+    border-radius: 5px;
+}
+.btn-container button:hover,
+.btn-container button.disable{
+    background-color: rgba(75, 36, 78, 0.695);
+    color: #fff;
+}
+.btn-container button.disable{
+    cursor: no-drop;
+}
+
+
+@media screen and (max-width : 600px) {
+    .btn-container{
+        width: 25px;
+        height: 25px;
+        margin: 8px;
+    }
+
+    .btn-container button {
+        font-weight: normal;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,27 @@
+.title-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.title-container h1.win {
+    color: rgb(16 158 0);
+}
+.title-container h1.loss {
+    color : rgb(227, 23, 71);
+}
+
+
+@media screen and (max-width : 600px) {
+    .title-container h1{
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width : 350px) {
+    .title-container h1{
+        font-size: 16px;
+    }
+}

@@ -1,0 +1,7 @@
+.word-container {
+    position: relative;
+    margin: 25px 0 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,21 @@
+.word-wrapper {
+    position: relative;
+    text-align: center;
+    margin: 0 5px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+}
+.word-wrapper .correct {
+    color: rgb(16 158 0);
+}
+.word-wrapper .wrong {
+    color: rgb(227, 23, 71);
+}
+
+@media screen and (max-width : 500px) {
+    .word-wrapper {
+        font-size: 14px;
+        margin: 0 2px;
+    }
+}
