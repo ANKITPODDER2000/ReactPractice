@@ -23,12 +23,8 @@ class App extends Component {
   render() {
     return (
       <div className="app-container">
-        <NavBar
-          colorDensity={this.state.colorDensity}
-          handleSliderValue={this.handleSliderValue}
-        />
         <Palette
-          {...getUpdatedPalette(SeedColors[4])}
+          {...getUpdatedPalette(SeedColors[0])}
           colorDensity={this.state.colorDensity}
         />
       </div>

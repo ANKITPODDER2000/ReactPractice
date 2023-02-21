@@ -35,3 +35,11 @@
   width: 150px;
   margin-left: 20px;
 }
+.navbar-container .right-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px;
+}

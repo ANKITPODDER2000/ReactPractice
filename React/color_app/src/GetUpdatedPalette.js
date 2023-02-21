@@ -2,7 +2,7 @@ import chroma, { hex } from "chroma-js";
 
 let getAllColorShade = (hexColor, noOffColors) => {
   return chroma
-    .scale([chroma(hexColor).brighten(2), chroma(hexColor).darken(2)])
+    .scale([chroma(hexColor).brighten(1.2), chroma(hexColor).darken(1.4)])
     .mode("lch")
     .colors(noOffColors);
 };
@@ -27,8 +27,12 @@ let getUpdatedPalette = (palette) => {
     for (let i = 0; i < colorRange.length; i++) {
       colorPalette.colorShade[colorRange[i]].push({
         name: `${color.name} ${colorRange[i]}`,
-        color: allShades[i],
-        rgbColor: chroma(allShades[i]).css(),
+        hex: allShades[i],
+        rgb: chroma(allShades[i]).css(),
+        rgba: chroma(allShades[i])
+          .css()
+          .replace("rgb(", "rgba(")
+          .replace(")", ",1)"),
       });
     }
   }

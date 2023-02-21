@@ -3,6 +3,7 @@ import Slider from "rc-slider";
 
 import "./css/NavBar.css";
 import "rc-slider/assets/index.css";
+import ColorFormat from "./ColorFormat";
 
 class NavBar extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class NavBar extends Component {
     return (
       <div className="navbar-container">
         <div className="left-container">
-          <a href="#" className="title">
+          <a href="/" className="title">
             Color Picker
           </a>
           <p className="level">Level : {this.props.colorDensity}</p>
@@ -30,7 +31,12 @@ class NavBar extends Component {
             />
           </div>
         </div>
-        <div className="right-container">RC</div>
+        <div className="right-container">
+          <ColorFormat
+            colorformat={this.props.colorformat}
+            handleColorformat={this.props.handleColorformat}
+          />
+        </div>
       </div>
     );
   }
