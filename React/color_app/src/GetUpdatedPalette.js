@@ -1,4 +1,4 @@
-import chroma, { hex } from "chroma-js";
+import chroma from "chroma-js";
 
 let getAllColorShade = (hexColor, noOffColors) => {
   return chroma

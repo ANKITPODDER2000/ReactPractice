@@ -35,13 +35,19 @@
   color: #000;
   font-size: 13px;
 }
-.copy-container p.more {
+.copy-container a.more {
   position: absolute;
   bottom: 0;
   right: 0;
   padding: 8px;
   color: #000;
   font-size: 13px;
+  text-decoration: none;
+  background-color: #0001;
+  transition: 0.5s;
+}
+.copy-container a.more:hover {
+  background-color: #0002;
 }
 .color-box .overlay {
   position: absolute;

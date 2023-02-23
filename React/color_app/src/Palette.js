@@ -41,7 +41,11 @@ class Palette extends Component {
         />
         <div className="color-box-container">
           {this.props.colorShade[this.state.colorDensity].map((color) => (
-            <ColorBox name={color.name} color={color[this.state.colorformat]} />
+            <ColorBox
+              name={color.name}
+              color={color[this.state.colorformat]}
+              paletteName={this.props.paletteName}
+            />
           ))}
         </div>
         <ConfirmBox open={this.state.open} handleClose={this.handleClose} />

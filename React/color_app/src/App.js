@@ -4,7 +4,26 @@ import SeedColors from "./SeedColors";
 import getUpdatedPalette from "./GetUpdatedPalette";
 
 import "./css/App.css";
-import NavBar from "./NavBar";
+import { Route, Switch } from "react-router-dom";
+import AllPalette from "./AllPalette";
+import ColorShades from "./ColorShades";
+
+const getAllShadesofColor = (palatte, color) => {
+  let allShades = [];
+  palatte = getUpdatedPalette(palatte[0]);
+  for (let shades = 100; shades <= 1000; shades += 100) {
+    let allcolors = palatte.colorShade[shades];
+    allShades.push(
+      allcolors.filter(
+        (colorShade) => colorShade.name.split(" ")[0] === color
+      )[0]
+    );
+  }
+
+  console.log(allShades);
+
+  return allShades;
+};
 
 class App extends Component {
   constructor(props) {
@@ -23,10 +42,48 @@ class App extends Component {
   render() {
     return (
       <div className="app-container">
-        <Palette
-          {...getUpdatedPalette(SeedColors[0])}
-          colorDensity={this.state.colorDensity}
-        />
+        <Switch>
+          <Route
+            exact
+            path="/"
+            component={() => (
+              <AllPalette
+                colors={SeedColors.map((color) => color.paletteName)}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/palette/:palette_name"
+            component={(props) => (
+              <Palette
+                {...getUpdatedPalette(
+                  SeedColors.filter(
+                    (palette) =>
+                      palette.paletteName === props.match.params.palette_name
+                  )[0]
+                )}
+                colorDensity={this.state.colorDensity}
+                {...props}
+              />
+            )}
+          />
+          <Route
+            exact
+            path="/palette/:palette_name/:color_name"
+            component={(props) => (
+              <ColorShades
+                color={getAllShadesofColor(
+                  SeedColors.filter(
+                    (palette) =>
+                      palette.paletteName === props.match.params.palette_name
+                  ),
+                  props.match.params.color_name
+                )}
+              />
+            )}
+          />
+        </Switch>
       </div>
     );
   }

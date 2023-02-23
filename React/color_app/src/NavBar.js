@@ -4,6 +4,7 @@ import Slider from "rc-slider";
 import "./css/NavBar.css";
 import "rc-slider/assets/index.css";
 import ColorFormat from "./ColorFormat";
+import { Link } from "react-router-dom";
 
 class NavBar extends Component {
   constructor(props) {
@@ -17,9 +18,9 @@ class NavBar extends Component {
     return (
       <div className="navbar-container">
         <div className="left-container">
-          <a href="/" className="title">
+          <Link to="/" className="title">
             Color Picker
-          </a>
+          </Link>
           <p className="level">Level : {this.props.colorDensity}</p>
           <div className="slider-container">
             <Slider

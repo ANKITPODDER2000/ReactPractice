@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { Link } from "react-router-dom";
 
 import "./css/ColorBox.css";
 
@@ -24,7 +25,14 @@ class ColorBox extends Component {
           <div className="copy-container">
             <p className="copy">Copy</p>
             <p className="color-name">{name}</p>
-            <p className="more">More</p>
+            <Link
+              to={`/palette/${this.props.paletteName}/${
+                this.props.name.split(" ")[0]
+              }`}
+              className="more"
+            >
+              More
+            </Link>
           </div>
           <div
             className={`overlay ${this.state.copied && "active"}`}
