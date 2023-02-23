@@ -8,11 +8,11 @@ import { Route, Switch } from "react-router-dom";
 import AllPalette from "./AllPalette";
 import ColorShades from "./ColorShades";
 
-const getAllShadesofColor = (palatte, color) => {
+const getAllShadesofColor = (palette, color) => {
   let allShades = [];
-  palatte = getUpdatedPalette(palatte[0]);
+  palette = getUpdatedPalette(palette[0]);
   for (let shades = 100; shades <= 1000; shades += 100) {
-    let allcolors = palatte.colorShade[shades];
+    let allcolors = palette.colorShade[shades];
     allShades.push(
       allcolors.filter(
         (colorShade) => colorShade.name.split(" ")[0] === color
@@ -20,7 +20,11 @@ const getAllShadesofColor = (palatte, color) => {
     );
   }
 
-  return allShades;
+  return {
+    allShades: allShades,
+    emoji: palette.emoji,
+    paletteName: palette.paletteName,
+  };
 };
 
 class App extends Component {
@@ -71,7 +75,7 @@ class App extends Component {
             path="/palette/:palette_name/:color_name"
             component={(props) => (
               <ColorShades
-                color={getAllShadesofColor(
+                {...getAllShadesofColor(
                   SeedColors.filter(
                     (palette) =>
                       palette.paletteName === props.match.params.palette_name

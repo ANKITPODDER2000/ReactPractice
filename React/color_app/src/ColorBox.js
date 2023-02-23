@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import "./css/ColorBox.css";
 
 class ColorBox extends Component {
+  static defaultProps = {
+    isPalette: true,
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -25,14 +28,16 @@ class ColorBox extends Component {
           <div className="copy-container">
             <p className="copy">Copy</p>
             <p className="color-name">{name}</p>
-            <Link
-              to={`/palette/${this.props.paletteName}/${
-                this.props.name.split(" ")[0]
-              }`}
-              className="more"
-            >
-              More
-            </Link>
+            {this.props.isPalette && (
+              <Link
+                to={`/palette/${this.props.paletteName}/${
+                  this.props.name.split(" ")[0]
+                }`}
+                className="more"
+              >
+                More
+              </Link>
+            )}
           </div>
           <div
             className={`overlay ${this.state.copied && "active"}`}
