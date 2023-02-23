@@ -7,6 +7,9 @@ import ColorFormat from "./ColorFormat";
 import { Link } from "react-router-dom";
 
 class NavBar extends Component {
+  static defaultProps = {
+    isPalettePage: true,
+  };
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -21,22 +24,28 @@ class NavBar extends Component {
           <Link to="/" className="title">
             Color Picker
           </Link>
-          <p className="level">Level : {this.props.colorDensity}</p>
-          <div className="slider-container">
-            <Slider
-              value={this.props.colorDensity}
-              min={100}
-              max={1000}
-              step={100}
-              onChange={this.handleChange}
-            />
-          </div>
+          {this.props.isPalettePage && (
+            <>
+              <p className="level">Level : {this.props.colorDensity}</p>
+              <div className="slider-container">
+                <Slider
+                  value={this.props.colorDensity}
+                  min={100}
+                  max={1000}
+                  step={100}
+                  onChange={this.handleChange}
+                />
+              </div>
+            </>
+          )}
         </div>
         <div className="right-container">
-          <ColorFormat
-            colorformat={this.props.colorformat}
-            handleColorformat={this.props.handleColorformat}
-          />
+          {this.props.isPalettePage && (
+            <ColorFormat
+              colorformat={this.props.colorformat}
+              handleColorformat={this.props.handleColorformat}
+            />
+          )}
         </div>
       </div>
     );

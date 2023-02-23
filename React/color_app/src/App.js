@@ -20,8 +20,6 @@ const getAllShadesofColor = (palatte, color) => {
     );
   }
 
-  console.log(allShades);
-
   return allShades;
 };
 
