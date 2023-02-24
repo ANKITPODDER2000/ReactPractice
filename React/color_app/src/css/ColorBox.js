@@ -1,7 +1,10 @@
+import chroma from "chroma-js";
+
 const style = {
   colorBox: {
     position: "relative",
     width: "20%",
+    color: (props) => (chroma(props.color).luminance() < 0.2 ? "#fff" : "#000"),
     height: (props) => (props.isPalette ? "25%" : "50%"),
     "&:hover $copyContainer $copy": {
       opacity: "1",
@@ -19,11 +22,17 @@ const style = {
       bottom: "0",
       right: "0",
       padding: "8px",
-      color: "#000",
       fontSize: "13px",
       textDecoration: "none",
-      backgroundColor: "#0001",
+      backgroundColor: (props) =>
+        chroma(props.color).luminance() < 0.2 ? "#fff2" : "#0002",
       transition: "0.5s",
+      color: (props) =>
+        chroma(props.color).luminance() < 0.2 ? "#fff" : "#000",
+      "&:hover": {
+        backgroundColor: (props) =>
+          chroma(props.color).luminance() < 0.2 ? "#fff4" : "#0004",
+      },
     },
   },
   colorName: {
@@ -31,7 +40,6 @@ const style = {
     bottom: "0",
     left: "0",
     padding: "8px",
-    color: "#000",
     fontSize: "13px",
   },
   copy: {
@@ -42,7 +50,6 @@ const style = {
     padding: "6px 20px",
     background: "#0004",
     textTransform: "uppercase",
-    color: "#000",
     cursor: "pointer",
     opacity: "0",
     transition: "1s",
@@ -85,10 +92,12 @@ const style = {
     width: "100%",
     padding: "30px 0",
     fontSize: "4rem",
-    color: "#fff",
-    background: "#fff3",
+    color: (props) => (chroma(props.color).luminance() < 0.2 ? "#fff" : "#000"),
+    background: (props) =>
+      chroma(props.color).luminance() < 0.2 ? "#fff3" : "#0003",
     textAlign: "center",
-    textShadow: "2px 2px #000",
+    textShadow: (props) =>
+      chroma(props.color).luminance() < 0.2 ? "2px 2px #000" : "2px 2px #fff",
   },
   active2: {
     zIndex: "15",
@@ -98,7 +107,7 @@ const style = {
     transitionDelay: "0.2s",
   },
   copiedColorname: {
-    color: "#fff",
+    color: (props) => (chroma(props.color).luminance() < 0.2 ? "#fff" : "#000"),
     fontSize: "1.5rem",
     marginTop: "1rem",
   },
