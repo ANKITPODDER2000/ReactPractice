@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import withStyles from "react-jss";
 import { Link } from "react-router-dom";
 
-import "./css/ColorBox.css";
+import style from "./css/ColorBox";
 
 class ColorBox extends Component {
   static defaultProps = {
@@ -21,13 +22,13 @@ class ColorBox extends Component {
     });
   }
   render() {
-    let { name, color } = this.props;
+    let { name, color, classes } = this.props;
     return (
       <CopyToClipboard text={color} onCopy={this.handleCopy}>
-        <div className="color-box" style={{ backgroundColor: color }}>
-          <div className="copy-container">
-            <p className="copy">Copy</p>
-            <p className="color-name">{name}</p>
+        <div className={classes.colorBox} style={{ backgroundColor: color }}>
+          <div className={classes.copyContainer}>
+            <p className={classes.copy}>Copy</p>
+            <p className={classes.colorName}>{name}</p>
             {this.props.isPalette && (
               <Link
                 to={`/palette/${this.props.paletteName}/${
@@ -40,12 +41,18 @@ class ColorBox extends Component {
             )}
           </div>
           <div
-            className={`overlay ${this.state.copied && "active"}`}
+            className={`${classes.overlay} ${
+              this.state.copied && classes.active1
+            }`}
             style={{ backgroundColor: color }}
           ></div>
-          <div className={`copied-content ${this.state.copied && "active"}`}>
-            <p className="copied">Copied</p>
-            <p className="colorname">{color}</p>
+          <div
+            className={`${classes.copiedContent} ${
+              this.state.copied && classes.active2
+            }`}
+          >
+            <p className={classes.copied}>Copied</p>
+            <p className={classes.copiedColorname}>{color}</p>
           </div>
         </div>
       </CopyToClipboard>
@@ -53,4 +60,4 @@ class ColorBox extends Component {
   }
 }
 
-export default ColorBox;
+export default withStyles(style)(ColorBox);

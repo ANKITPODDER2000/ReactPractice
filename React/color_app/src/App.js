@@ -48,10 +48,8 @@ class App extends Component {
           <Route
             exact
             path="/"
-            component={() => (
-              <AllPalette
-                colors={SeedColors.map((color) => color.paletteName)}
-              />
+            component={(params) => (
+              <AllPalette colors={SeedColors} {...params} />
             )}
           />
           <Route

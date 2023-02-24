@@ -3,8 +3,26 @@ import ColorBox from "./ColorBox";
 import ConfirmBox from "./ConfirmBox";
 import NavBar from "./NavBar";
 
-import "./css/Palette.css";
 import Footer from "./Footer";
+import withStyles from "react-jss";
+
+const styles = {
+  paletteContainer: {
+    position: "relative",
+    width: "100%",
+    height: "100%",
+  },
+  colorBoxContainer: {
+    position: "relative",
+    width: "100%",
+    height: "90%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
+    background: "red",
+  },
+};
 
 class Palette extends Component {
   constructor(props) {
@@ -31,15 +49,16 @@ class Palette extends Component {
     this.setState({ colorformat: val, open: true });
   }
   render() {
+    const { classes } = { ...this.props };
     return (
-      <div className="palette-container">
+      <div className={classes.paletteContainer}>
         <NavBar
           colorDensity={this.state.colorDensity}
           handleSliderValue={this.handleSliderValue}
           colorformat={this.state.colorformat}
           handleColorformat={this.handleColorformat}
         />
-        <div className="color-box-container">
+        <div className={classes.colorBoxContainer}>
           {this.props.colorShade[this.state.colorDensity].map((color) => (
             <ColorBox
               name={color.name}
@@ -55,4 +74,4 @@ class Palette extends Component {
   }
 }
 
-export default Palette;
+export default withStyles(styles)(Palette);
