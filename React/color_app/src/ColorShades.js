@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
 import ColorBox from "./ColorBox";
-import "./css/ColorShades.css";
 import Footer from "./Footer";
 import withStyles from "react-jss";
 
@@ -21,9 +20,9 @@ class ColorShades extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={classes.root}>
+      <div>
         <NavBar isPalettePage={false} />
-        <div className="color-shade-container">
+        <div className={classes.root}>
           {this.props.allShades.map((color) => (
             <ColorBox name={color.name} color={color.hex} isPalette={false} />
           ))}
