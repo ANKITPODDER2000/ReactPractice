@@ -2,6 +2,20 @@ import React, { Component } from "react";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import "./css/ColorFormat.css";
+import withStyles from "react-jss";
+
+const styles = {
+  root: {
+    position: "relative",
+    display: "block",
+    height: "80%",
+    "& div": {
+      position: "relative",
+      height: "100%",
+      width: "160px",
+    },
+  },
+};
 
 class ColorFormat extends Component {
   constructor(props) {
@@ -18,8 +32,9 @@ class ColorFormat extends Component {
     this.props.handleColorformat(e.target.value);
   }
   render() {
+    const { classes } = { ...this.props };
     return (
-      <div className="format-selecter">
+      <div className={classes.root}>
         <Select
           value={this.state.colorformat}
           onChange={this.handleColorformat}
@@ -33,4 +48,4 @@ class ColorFormat extends Component {
   }
 }
 
-export default ColorFormat;
+export default withStyles(styles)(ColorFormat);
