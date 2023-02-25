@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import Slider from "rc-slider";
+import styles from "./css/NavBar";
 
-import "./css/NavBar.css";
 import "rc-slider/assets/index.css";
 import ColorFormat from "./ColorFormat";
 import { Link } from "react-router-dom";
+import withStyles from "react-jss";
 
 class NavBar extends Component {
   static defaultProps = {
@@ -18,16 +19,17 @@ class NavBar extends Component {
     this.props.handleSliderValue(val);
   }
   render() {
+    const { classes } = { ...this.props };
     return (
-      <div className="navbar-container">
-        <div className="left-container">
-          <Link to="/" className="title">
+      <div className={classes.root}>
+        <div className={classes.leftDiv}>
+          <Link to="/" className={classes.title}>
             Color Picker
           </Link>
           {this.props.isPalettePage && (
             <>
-              <p className="level">Level : {this.props.colorDensity}</p>
-              <div className="slider-container">
+              <p className={classes.level}>Level : {this.props.colorDensity}</p>
+              <div className={classes.sliderContainer}>
                 <Slider
                   value={this.props.colorDensity}
                   min={100}
@@ -39,7 +41,7 @@ class NavBar extends Component {
             </>
           )}
         </div>
-        <div className="right-container">
+        <div className={classes.leftDiv}>
           {this.props.isPalettePage && (
             <ColorFormat
               colorformat={this.props.colorformat}
@@ -52,4 +54,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withStyles(styles)(NavBar);
