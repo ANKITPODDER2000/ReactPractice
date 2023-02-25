@@ -109,6 +109,7 @@ class CreatePalette extends Component {
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRandomColor = this.handleRandomColor.bind(this);
   }
   handleSubmit() {
     this.setState(
@@ -128,7 +129,31 @@ class CreatePalette extends Component {
   handleDrawerOpen() {
     this.setState({ open: true });
   }
-
+  handleRandomColor() {
+    let color = undefined;
+    let specific_name = undefined;
+    while (true) {
+      color = chroma(chroma.random()).hex();
+      console.log(color);
+      let found = false;
+      specific_name = ntc.name(color)[1];
+      for (let i = 0; i < this.state.palette.length; i++) {
+        let c = this.state.palette[i];
+        if (c.color === color) {
+          found = true;
+          break;
+        }
+        if (c.name === specific_name) {
+          found = true;
+          break;
+        }
+      }
+      if (!found) break;
+    }
+    this.setState((st) => ({
+      palette: [...st.palette, { color: color, name: specific_name }],
+    }));
+  }
   handleDrawerClose() {
     this.setState({ open: false });
   }
@@ -204,7 +229,12 @@ class CreatePalette extends Component {
             <Button variant="contained" color="error">
               Clear Palette
             </Button>
-            <Button variant="contained" color="secondary">
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={this.handleRandomColor}
+              disabled={this.state.palette.length === 20}
+            >
               Pick Random
             </Button>
           </div>
@@ -230,6 +260,7 @@ class CreatePalette extends Component {
               ]}
             />
             <Button
+              disabled={this.state.palette.length === 20}
               variant="contained"
               type="submit"
               style={{
@@ -240,7 +271,7 @@ class CreatePalette extends Component {
                   chroma(this.state.color).luminance() < 0.2 ? "#fff" : "#000",
               }}
             >
-              Add Color
+              {this.state.palette.length === 20 ? "Palette Full" : "Add Color"}
             </Button>
           </ValidatorForm>
         </Drawer>
