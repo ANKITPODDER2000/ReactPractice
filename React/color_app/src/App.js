@@ -4,10 +4,11 @@ import SeedColors from "./SeedColors";
 import getUpdatedPalette from "./GetUpdatedPalette";
 
 import { Route, Switch } from "react-router-dom";
-import AllPalette from "./AllPalette";
+import Home from "./Home";
 import ColorShades from "./ColorShades";
 import getAllShadesofColor from "./getAllShadesofColor";
 import withStyles from "react-jss";
+import CreatePalette from "./CreatePalette";
 
 const styles = {
   root: {
@@ -40,9 +41,12 @@ class App extends Component {
           <Route
             exact
             path="/"
-            component={(params) => (
-              <AllPalette colors={SeedColors} {...params} />
-            )}
+            component={(params) => <Home colors={SeedColors} {...params} />}
+          />
+          <Route
+            exact
+            path="/palette/new"
+            component={(params) => <CreatePalette {...params} />}
           />
           <Route
             exact
