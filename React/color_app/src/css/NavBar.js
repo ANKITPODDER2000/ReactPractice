@@ -1,7 +1,6 @@
 const styles = {
   root: {
     position: "relative",
-    display: "block",
     height: "6vh",
     display: "flex",
     justifyContent: "space-between",
@@ -17,7 +16,6 @@ const styles = {
     flexDirection: "row",
   },
   title: {
-    display: "block",
     padding: "0 30px",
     textDecoration: "none",
     height: "100%",

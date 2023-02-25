@@ -3,28 +3,19 @@ import Palette from "./Palette";
 import SeedColors from "./SeedColors";
 import getUpdatedPalette from "./GetUpdatedPalette";
 
-import "./css/App.css";
 import { Route, Switch } from "react-router-dom";
 import AllPalette from "./AllPalette";
 import ColorShades from "./ColorShades";
+import getAllShadesofColor from "./getAllShadesofColor";
+import withStyles from "react-jss";
 
-const getAllShadesofColor = (palette, color) => {
-  let allShades = [];
-  palette = getUpdatedPalette(palette[0]);
-  for (let shades = 100; shades <= 1000; shades += 100) {
-    let allcolors = palette.colorShade[shades];
-    allShades.push(
-      allcolors.filter(
-        (colorShade) => colorShade.name.split(" ")[0] === color
-      )[0]
-    );
-  }
-
-  return {
-    allShades: allShades,
-    emoji: palette.emoji,
-    paletteName: palette.paletteName,
-  };
+const styles = {
+  root: {
+    position: "relative",
+    width: "100%",
+    height: "100vh",
+    overflow: "hidden",
+  },
 };
 
 class App extends Component {
@@ -42,8 +33,9 @@ class App extends Component {
   }
 
   render() {
+    const { classes } = { ...this.props };
     return (
-      <div className="app-container">
+      <div className={classes.root}>
         <Switch>
           <Route
             exact
@@ -89,4 +81,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);

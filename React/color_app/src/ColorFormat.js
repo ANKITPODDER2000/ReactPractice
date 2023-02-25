@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-import "./css/ColorFormat.css";
 import withStyles from "react-jss";
 
 const styles = {
