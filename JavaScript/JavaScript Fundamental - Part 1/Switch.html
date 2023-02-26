@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Switch Case Statement</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        background: #5f2c82;
+        background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);
+        background: linear-gradient(to right, #49a09d, #5f2c82);
+      }
+      h1 {
+        font-size: 60px;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Switch Case Statement</h1>
+
+    <script>
+      let val = 10;
+      switch (val) {
+        case 10:
+          console.log("Value is 10");
+          break;
+        case 20:
+          console.log("Value is 20");
+          break;
+        default:
+          console.log("Sorry I can't guess the value");
+      }
+      console.log("=====================================================");
+      val = 10;
+      switch (val) {
+        case 10:
+          console.log("Value is 10");
+        case 20:
+          console.log("Value is 20");
+        default:
+          console.log("Sorry I can't guess the value");
+      }
+      console.log("=====================================================");
+      val = 10;
+      switch (val) {
+        case 10:
+          console.log("Value is 10");
+        case 20:
+          console.log("Value is 20");
+        case 30:
+          console.log("Value is 30");
+          break;
+        default:
+          console.log("Sorry I can't guess the value");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>Falsys</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        background: #5f2c82;
+        background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);
+        background: linear-gradient(to right, #49a09d, #5f2c82);
+      }
+      h1 {
+        font-size: 60px;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Falsys</h1>
+
+    <script>
+      console.log(
+        `Value of the following expresion : '' == false : ${"" == false}`
+      );
+      console.log(
+        `Value of the following expresion : undefined == false : ${
+          undefined == false
+        }`
+      );
+      console.log(
+        `Value of the following expresion : 0 == false : ${0 == false}`
+      );
+      console.log(
+        `Value of the following expresion : NaN == false : ${NaN == false}`
+      );
+      console.log(
+        `Value of the following expresion : null == false : ${null == false}`
+      );
+      console.log(
+        `Value of the following expresion : [] == false : ${[] == false}`
+      );
+      console.log(
+        `Value of the following expresion : {} == false : ${{} == false}`
+      );
+      console.log("=======================================================");
+      console.log(
+        `Value of the following expresion : Boolean(')' == false : ${
+          Boolean("") == false
+        }`
+      );
+      console.log(
+        `Value of the following expresion : Boolean(undefined) == false : ${
+          Boolean(undefined) == false
+        }`
+      );
+      console.log(
+        `Value of the following expresion : Boolean(0) == false : ${
+          Boolean(0) == false
+        }`
+      );
+      console.log(
+        `Value of the following expresion : Boolean(NaN) == false : ${
+          Boolean(NaN) == false
+        }`
+      );
+      console.log(
+        `Value of the following expresion : Boolean(null) == false : ${
+          Boolean(null) == false
+        }`
+      );
+      console.log(
+        `Value of the following expresion : Boolean([)] == false : ${
+          Boolean([]) == false
+        }`
+      );
+      console.log(
+        `Value of the following expresion : Boolean({)} == false : ${
+          Boolean({}) == false
+        }`
+      );
+    </script>
+  </body>
+</html>
