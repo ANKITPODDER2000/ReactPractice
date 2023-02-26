@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>JavaScript Data Type</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        background: #5f2c82;
+        background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);
+        background: linear-gradient(to right, #49a09d, #5f2c82);
+      }
+      h1 {
+        font-size: 60px;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Data Type</h1>
+
+    <script>
+      let firstName = "Ankit";
+      console.log(`Type of firstName is : ${typeof firstName}`);
+      let lastName = "Podder";
+      console.log(`Type of lastName is : ${typeof lastName}`);
+      let age = 20;
+      console.log(`Type of age is : ${typeof age}`);
+
+      let isMarried = false;
+      console.log(`Type of isMarried is : ${typeof isMarried}`);
+
+      let dateOfBirth;
+      console.log(`Type of dateOfBirth is : ${typeof dateOfBirth}`);
+      let hobby = null;
+      console.log(`Type of hobby is : ${typeof hobby}`);
+
+      let demoVar;
+      console.log(`Type of demoVar is : ${typeof demoVar}`);
+      demoVar = 20;
+      console.log(
+        `Type of demoVar is (after demoVar = 20) : ${typeof demoVar}`
+      );
+      demoVar = "Its a String";
+      console.log(
+        `Type of demoVar is (after demoVar = 'Its a String') : ${typeof demoVar}`
+      );
+    </script>
+  </body>
+</html>

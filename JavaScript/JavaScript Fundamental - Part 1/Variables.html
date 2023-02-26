@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <title>JavaScript Variable</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        background: #5f2c82;
+        background: -webkit-linear-gradient(to right, #49a09d, #5f2c82);
+        background: linear-gradient(to right, #49a09d, #5f2c82);
+      }
+      h1 {
+        font-size: 60px;
+        color: #fff;
+        font-family: "Poppins", sans-serif;
+        letter-spacing: 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Variable</h1>
+
+    <script>
+      let firstName = "Ankit";
+      let lastName = "Podder";
+      let age = 20;
+
+      console.log("My name is : " + firstName + " " + lastName);
+      console.log(`My age : ${age}`);
+
+      // Variable name should be descriptive, we should understand, what is the value of variable from its name
+      let name1 = "Ankit";
+      let name2 = "Podder";
+
+      // We can also use _, $, and any digit to write a variable name but variable name should not be start with digit.
+      let var$ = 10;
+      let $var = 20;
+      let var_ = 30;
+      let _var = 40;
+
+      console.log(`Value of var$ is : ${var$}`);
+      console.log(`Value of $var is : ${$var}`);
+      console.log(`Value of var_ is : ${var_}`);
+      console.log(`Value of _var is : ${_var}`);
+    </script>
+  </body>
+</html>
