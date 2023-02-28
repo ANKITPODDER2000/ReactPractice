@@ -3,12 +3,8 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import { ChromePicker } from "react-color";
 import { Button } from "@mui/material";
@@ -17,6 +13,7 @@ import chroma from "chroma-js";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import CreateColorBox from "./CreateColorBox";
 import ntc from "./ntc";
+import PaletteNavBar from "./PaletteNavBar";
 
 const drawerWidth = 350;
 
@@ -65,22 +62,6 @@ const styles = {
     },
   },
 };
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -190,22 +171,7 @@ class CreatePalette extends Component {
     return (
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar position="fixed" open={open}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={this.handleDrawerOpen}
-              edge="start"
-              sx={{ mr: 2, ...(open && { display: "none" }) }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap component="div">
-              Create Your Palette
-            </Typography>
-          </Toolbar>
-        </AppBar>
+        <PaletteNavBar open={open} handleDrawerOpen={this.handleDrawerOpen} />
         <Drawer
           sx={{
             width: drawerWidth,
