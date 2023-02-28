@@ -46,7 +46,7 @@ class CreatePaletteColorBox extends Component {
           }}
         >
           {palette.map((color) => (
-            <CreateColorBox {...color} />
+            <CreateColorBox {...color} handleRemove={this.props.handleRemove} />
           ))}
         </div>
       </Main>

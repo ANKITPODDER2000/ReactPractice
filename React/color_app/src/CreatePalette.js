@@ -6,6 +6,7 @@ import ntc from "./ntc";
 import PaletteNavBar from "./PaletteNavBar";
 import CreatePaletteColorBox from "./CreatePaletteColorBox";
 import CreatePaletteSideBar from "./CreatePaletteSideBar";
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 class CreatePalette extends Component {
   constructor(props) {
@@ -26,6 +27,16 @@ class CreatePalette extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRandomColor = this.handleRandomColor.bind(this);
+    this.handleRemove = this.handleRemove.bind(this);
+    this.handleClearPalette = this.handleClearPalette.bind(this);
+  }
+  handleClearPalette() {
+    this.setState({ palette: [] });
+  }
+  handleRemove(color) {
+    this.setState((st) => ({
+      palette: st.palette.filter((palette) => palette.color !== color),
+    }));
   }
   handleSubmit() {
     this.setState(
@@ -82,6 +93,25 @@ class CreatePalette extends Component {
     });
   }
 
+  componentDidMount() {
+    ValidatorForm.addValidationRule("isSameName", (value) => {
+      for (let i = 0; i < this.state.palette.length; i++) {
+        if (
+          this.state.palette[i].name.toLocaleLowerCase() ===
+          value.toLocaleLowerCase()
+        )
+          return false;
+      }
+      return true;
+    });
+    ValidatorForm.addValidationRule("isSameColor", (value) => {
+      for (let i = 0; i < this.state.palette.length; i++) {
+        if (this.state.palette[i].color === this.state.color) return false;
+      }
+      return true;
+    });
+  }
+
   render() {
     return (
       <Box sx={{ display: "flex" }}>
@@ -100,10 +130,12 @@ class CreatePalette extends Component {
           open={this.state.open}
           name={this.state.name}
           handleSubmit={this.handleSubmit}
+          handleClearPalette={this.handleClearPalette}
         />
         <CreatePaletteColorBox
           open={this.state.open}
           palette={this.state.palette}
+          handleRemove={this.handleRemove}
         />
       </Box>
     );

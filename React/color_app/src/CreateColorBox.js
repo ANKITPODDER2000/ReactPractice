@@ -39,7 +39,7 @@ class CreateColorBox extends Component {
       <div className={classes.root} style={{ backgroundColor: color }}>
         <div className={classes.innerDiv}>
           <p>{name}</p>
-          <DeleteForeverIcon />
+          <DeleteForeverIcon onClick={() => this.props.handleRemove(color)} />
         </div>
       </div>
     );

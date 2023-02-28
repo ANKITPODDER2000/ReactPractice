@@ -49,21 +49,12 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 class CreatePaletteSideBar extends Component {
-  componentDidMount() {
-    const { palette, color } = { ...this.props };
-    ValidatorForm.addValidationRule("isSameName", (value) => {
-      for (let i = 0; i < palette.length; i++) {
-        if (palette[i].name.toLocaleLowerCase() === value.toLocaleLowerCase())
-          return false;
-      }
-      return true;
-    });
-    ValidatorForm.addValidationRule("isSameColor", (value) => {
-      for (let i = 0; i < palette.length; i++) {
-        if (palette[i].color === color) return false;
-      }
-      return true;
-    });
+  constructor(props) {
+    super(props);
+    this.state = {
+      palette: this.props.palette,
+      color: this.props.color,
+    };
   }
 
   render() {
@@ -78,6 +69,7 @@ class CreatePaletteSideBar extends Component {
       open,
       name,
       handleSubmit,
+      handleClearPalette,
     } = {
       ...this.props,
     };
@@ -102,7 +94,11 @@ class CreatePaletteSideBar extends Component {
         </DrawerHeader>
         <Divider />
         <div className={classes.btnContainer}>
-          <Button variant="contained" color="error">
+          <Button
+            variant="contained"
+            color="error"
+            onClick={handleClearPalette}
+          >
             Clear Palette
           </Button>
           <Button
