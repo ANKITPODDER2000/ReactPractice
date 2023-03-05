@@ -43,7 +43,7 @@ const styles = {
     width: "50%",
     margin: "0 auto",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "flex-start",
     flexWrap: "wrap",
   },
 };
