@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Palette from "./Palette";
 import SeedColors from "./SeedColors";
 import getUpdatedPalette from "./GetUpdatedPalette";
 
@@ -9,6 +8,7 @@ import ColorShades from "./ColorShades";
 import getAllShadesofColor from "./getAllShadesofColor";
 import withStyles from "react-jss";
 import CreatePalette from "./CreatePalette";
+import Palette from "./Palette";
 
 const styles = {
   root: {
@@ -24,13 +24,20 @@ class App extends Component {
     super(props);
     this.state = {
       colorDensity: 500,
+      SeedColors: SeedColors,
     };
     this.handleSliderValue = this.handleSliderValue.bind(this);
+    this.handleCreatePalette = this.handleCreatePalette.bind(this);
   }
   handleSliderValue(val) {
     this.setState({
       colorDensity: val,
     });
+  }
+  handleCreatePalette(palette) {
+    this.setState((st) => ({
+      SeedColors: [...st.SeedColors, palette],
+    }));
   }
 
   render() {
@@ -41,12 +48,22 @@ class App extends Component {
           <Route
             exact
             path="/"
-            component={(params) => <Home colors={SeedColors} {...params} />}
+            component={(params) => (
+              <Home colors={this.state.SeedColors} {...params} />
+            )}
           />
           <Route
             exact
             path="/palette/new"
-            component={(params) => <CreatePalette {...params} />}
+            component={(params) => (
+              <CreatePalette
+                {...params}
+                paletteNames={this.state.SeedColors.map(
+                  (palette) => palette.paletteName
+                )}
+                handleCreatePalette={this.handleCreatePalette}
+              />
+            )}
           />
           <Route
             exact
@@ -54,7 +71,7 @@ class App extends Component {
             component={(props) => (
               <Palette
                 {...getUpdatedPalette(
-                  SeedColors.filter(
+                  this.state.SeedColors.filter(
                     (palette) =>
                       palette.paletteName === props.match.params.palette_name
                   )[0]
@@ -70,7 +87,7 @@ class App extends Component {
             component={(props) => (
               <ColorShades
                 {...getAllShadesofColor(
-                  SeedColors.filter(
+                  this.state.SeedColors.filter(
                     (palette) =>
                       palette.paletteName === props.match.params.palette_name
                   ),

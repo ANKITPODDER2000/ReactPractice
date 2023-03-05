@@ -6,7 +6,7 @@ import ntc from "./ntc";
 import PaletteNavBar from "./PaletteNavBar";
 import CreatePaletteColorBox from "./CreatePaletteColorBox";
 import CreatePaletteSideBar from "./CreatePaletteSideBar";
-import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import { ValidatorForm } from "react-material-ui-form-validator";
 
 class CreatePalette extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class CreatePalette extends Component {
       open: true,
       color: "#f0f521",
       name: "",
-      palette: [
+      colors: [
         { color: "#f0f521", name: "Yellow" },
         { color: "#6b34ca", name: "Blue" },
       ],
@@ -29,19 +29,20 @@ class CreatePalette extends Component {
     this.handleRandomColor = this.handleRandomColor.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.handleClearPalette = this.handleClearPalette.bind(this);
+    this.createNewPalette = this.createNewPalette.bind(this);
   }
   handleClearPalette() {
     this.setState({ palette: [] });
   }
   handleRemove(color) {
     this.setState((st) => ({
-      palette: st.palette.filter((palette) => palette.color !== color),
+      colors: st.colors.filter((palette) => palette.color !== color),
     }));
   }
   handleSubmit() {
     this.setState(
       (st) => ({
-        palette: [...st.palette, { color: st.color, name: st.name }],
+        colors: [...st.colors, { color: st.color, name: st.name }],
       }),
       () => {
         this.setState({ name: "", color: "#f00" });
@@ -61,11 +62,10 @@ class CreatePalette extends Component {
     let specific_name = undefined;
     while (true) {
       color = chroma(chroma.random()).hex();
-      console.log(color);
       let found = false;
       specific_name = ntc.name(color)[1];
-      for (let i = 0; i < this.state.palette.length; i++) {
-        let c = this.state.palette[i];
+      for (let i = 0; i < this.state.colors.length; i++) {
+        let c = this.state.colors[i];
         if (c.color === color) {
           found = true;
           break;
@@ -78,7 +78,7 @@ class CreatePalette extends Component {
       if (!found) break;
     }
     this.setState((st) => ({
-      palette: [...st.palette, { color: color, name: specific_name }],
+      colors: [...st.colors, { color: color, name: specific_name }],
     }));
   }
   handleDrawerClose() {
@@ -93,20 +93,43 @@ class CreatePalette extends Component {
     });
   }
 
+  createNewPalette(paletteName) {
+    let newPalette = {
+      colors: this.state.colors,
+      paletteName: paletteName,
+      emoji: "💕",
+      id: paletteName.toLowerCase().replaceAll(" ", "-"),
+    };
+    this.props.handleCreatePalette(newPalette);
+    this.props.history.push("/");
+  }
+
   componentDidMount() {
     ValidatorForm.addValidationRule("isSameName", (value) => {
-      for (let i = 0; i < this.state.palette.length; i++) {
+      for (let i = 0; i < this.state.colors.length; i++) {
         if (
-          this.state.palette[i].name.toLocaleLowerCase() ===
+          this.state.colors[i].name.toLocaleLowerCase() ===
           value.toLocaleLowerCase()
         )
           return false;
       }
       return true;
     });
+
+    ValidatorForm.addValidationRule("isSamePaletteName", (value) => {
+      for (let i = 0; i < this.props.paletteNames.length; i++) {
+        if (
+          this.props.paletteNames[i].toLocaleLowerCase() ===
+          value.toLocaleLowerCase()
+        )
+          return false;
+      }
+      return true;
+    });
+
     ValidatorForm.addValidationRule("isSameColor", (value) => {
-      for (let i = 0; i < this.state.palette.length; i++) {
-        if (this.state.palette[i].color === this.state.color) return false;
+      for (let i = 0; i < this.state.colors.length; i++) {
+        if (this.state.colors[i].color === this.state.color) return false;
       }
       return true;
     });
@@ -119,10 +142,13 @@ class CreatePalette extends Component {
         <PaletteNavBar
           open={this.state.open}
           handleDrawerOpen={this.handleDrawerOpen}
+          history={this.props.history}
+          nColor={this.state.colors.length}
+          createNewPalette={this.createNewPalette}
         />
         <CreatePaletteSideBar
           handleDrawerClose={this.handleDrawerClose}
-          palette={this.state.palette}
+          palette={this.state.colors}
           handleRandomColor={this.handleRandomColor}
           handleColorChange={this.handleColorChange}
           handleChange={this.handleChange}
@@ -134,7 +160,7 @@ class CreatePalette extends Component {
         />
         <CreatePaletteColorBox
           open={this.state.open}
-          palette={this.state.palette}
+          palette={this.state.colors}
           handleRemove={this.handleRemove}
         />
       </Box>
