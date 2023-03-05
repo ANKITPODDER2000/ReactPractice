@@ -51,7 +51,7 @@ export default class PaletteNavBar extends Component {
     return (
       <AppBar position="fixed" open={open}>
         <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
-          <div>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
             <IconButton
               color="inherit"
               aria-label="open drawer"
