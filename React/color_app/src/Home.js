@@ -7,9 +7,10 @@ const styles = {
   root: {
     position: "relative",
     width: "100%",
-    height: "100vh",
+    minHeight: "100vh",
     flexWrap: "wrap",
     background: "#262683",
+    paddingBottom: "60px",
   },
   nav: {
     position: "relative",
