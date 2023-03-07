@@ -9,7 +9,7 @@ const styles = {
     width: "100%",
     minHeight: "100vh",
     flexWrap: "wrap",
-    background: "#262683",
+    background: "linear-gradient(to left, #373b44, #4286f4);",
     paddingBottom: "60px",
   },
   nav: {
@@ -37,6 +37,15 @@ const styles = {
         backgroundColor: "#fff3",
       },
     },
+    "@media (max-width: 1270px)": {
+      width: "70%",
+    },
+    "@media (max-width: 1000px)": {
+      width: "90%",
+    },
+    "@media (max-width: 700px)": {
+      width: "90%",
+    },
   },
   innerdiv: {
     position: "relative",
@@ -46,6 +55,18 @@ const styles = {
     display: "flex",
     justifyContent: "flex-start",
     flexWrap: "wrap",
+    "@media (max-width: 1270px)": {
+      width: "70%",
+    },
+    "@media (max-width: 1000px)": {
+      width: "90%",
+    },
+    "@media (max-width: 700px)": {
+      justifyContent: "space-between",
+    },
+    "@media (max-width: 460px)": {
+      justifyContent: "center",
+    },
   },
 };
 

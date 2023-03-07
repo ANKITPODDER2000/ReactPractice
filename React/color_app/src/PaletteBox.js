@@ -6,9 +6,7 @@ const styles = {
     position: "relative",
     width: "200px",
     height: "150px",
-    margin: "15px 0",
-    marginLeft: "calc(calc(100% - 600px) / 6)",
-    marginRight: "calc(calc(100% - 600px) / 6)",
+    margin: "15px calc(calc(100% - 600px) / 6)",
     borderRadius: "4px",
     boxShadow: "10px 10px 10px #0001",
     background: "#fff",
@@ -16,6 +14,12 @@ const styles = {
     transition: "0.5s",
     "&:hover": {
       boxShadow: "10px 10px 10px #0006",
+    },
+    "@media (max-width: 700px)": {
+      margin: "15px 0",
+    },
+    "@media (max-width: 460px)": {
+      margin: "15px 10px",
     },
   },
   innerdiv1: {
