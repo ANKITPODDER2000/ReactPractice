@@ -31,7 +31,7 @@ export default class PaletteNavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      stage: "",
+      stage: "emoji",
     };
     this.handleClose = this.handleClose.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -43,8 +43,8 @@ export default class PaletteNavBar extends Component {
   handleCreatePalette() {
     this.setState({ stage: "form" });
   }
-  handleSubmit(palettename) {
-    this.props.createNewPalette(palettename);
+  handleSubmit(palettename, emoji) {
+    this.props.createNewPalette(palettename, emoji);
   }
   render() {
     const { open, handleDrawerOpen } = { ...this.props };

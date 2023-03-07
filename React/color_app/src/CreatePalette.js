@@ -93,11 +93,11 @@ class CreatePalette extends Component {
     });
   }
 
-  createNewPalette(paletteName) {
+  createNewPalette(paletteName, emoji) {
     let newPalette = {
       colors: this.state.colors,
       paletteName: paletteName,
-      emoji: "💕",
+      emoji: emoji,
       id: paletteName.toLowerCase().replaceAll(" ", "-"),
     };
     this.props.handleCreatePalette(newPalette);
