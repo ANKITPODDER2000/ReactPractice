@@ -12,7 +12,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: `-${drawerWidth}px`,
-    "@media (max-width : 700px)": {
+    "@media (max-width : 750px)": {
       marginLeft: "-100%",
     },
     ...(open && {

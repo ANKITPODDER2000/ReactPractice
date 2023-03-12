@@ -10,6 +10,7 @@ import withStyles from "react-jss";
 import chroma from "chroma-js";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import drawerWidth from "./config";
+import PaletteBox from "./PaletteBox";
 
 const styles = {
   btnContainer: {
@@ -19,6 +20,11 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    "& Button": {
+      "@media (max-width : 400px)": {
+        fontSize: "10px",
+      },
+    },
   },
   form: {
     position: "relative",
@@ -33,6 +39,11 @@ const styles = {
         boxSizing: "border-box",
         height: "50px",
         marginBottom: "15px",
+      },
+    },
+    "& Button": {
+      "@media (max-width : 400px)": {
+        fontSize: "10px",
       },
     },
   },
@@ -80,11 +91,11 @@ class CreatePaletteSideBar extends Component {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
-            "@media (max-width : 700px)": {
+            "@media (max-width : 750px)": {
               width: "100%",
             },
           },
-          "@media (max-width : 700px)": {
+          "@media (max-width : 750px)": {
             width: "100%",
           },
         }}
@@ -150,6 +161,7 @@ class CreatePaletteSideBar extends Component {
             {palette.length === 20 ? "Palette Full" : "Add Color"}
           </Button>
         </ValidatorForm>
+        {/* <PaletteBox name={name} colors={palette} /> */}
       </Drawer>
     );
   }

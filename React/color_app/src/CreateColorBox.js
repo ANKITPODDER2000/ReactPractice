@@ -8,6 +8,10 @@ const style = {
     position: "relative",
     width: "20%",
     height: "25%",
+    "@media (max-width : 550px)": {
+      width: "50%",
+      height: "10%",
+    },
   },
   innerDiv: {
     position: "absolute",
