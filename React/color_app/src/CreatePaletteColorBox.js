@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { styled } from "@mui/material/styles";
 import CreateColorBox from "./CreateColorBox";
-
-const drawerWidth = 350;
+import drawerWidth from "./config";
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -13,6 +12,9 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: `-${drawerWidth}px`,
+    "@media (max-width : 700px)": {
+      marginLeft: "-100%",
+    },
     ...(open && {
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,

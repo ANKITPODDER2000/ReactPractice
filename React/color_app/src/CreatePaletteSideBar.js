@@ -9,8 +9,7 @@ import { Button } from "@mui/material";
 import withStyles from "react-jss";
 import chroma from "chroma-js";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
-
-const drawerWidth = 350;
+import drawerWidth from "./config";
 
 const styles = {
   btnContainer: {
@@ -81,6 +80,12 @@ class CreatePaletteSideBar extends Component {
           "& .MuiDrawer-paper": {
             width: drawerWidth,
             boxSizing: "border-box",
+            "@media (max-width : 700px)": {
+              width: "100%",
+            },
+          },
+          "@media (max-width : 700px)": {
+            width: "100%",
           },
         }}
         variant="persistent"

@@ -7,8 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Button } from "@mui/material";
 import CreatePaletteNameForm from "./CreatePaletteNameForm";
-
-let drawerWidth = 350;
+import drawerWidth from "./config";
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
@@ -24,6 +23,10 @@ const AppBar = styled(MuiAppBar, {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
+    "@media (max-width : 700px)": {
+      width: "0",
+      marginLeft: "100%",
+    },
   }),
 }));
 
