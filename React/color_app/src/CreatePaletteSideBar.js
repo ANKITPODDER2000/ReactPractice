@@ -10,7 +10,6 @@ import withStyles from "react-jss";
 import chroma from "chroma-js";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import drawerWidth from "./config";
-import PaletteBox from "./PaletteBox";
 
 const styles = {
   btnContainer: {

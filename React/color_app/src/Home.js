@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import withStyles from "react-jss";
 import { Link } from "react-router-dom";
 import PaletteBox from "./PaletteBox";
+import img from "./images/background.svg";
 
 const styles = {
   root: {
@@ -9,7 +10,7 @@ const styles = {
     width: "100%",
     minHeight: "100vh",
     flexWrap: "wrap",
-    background: "linear-gradient(to left, #373b44, #4286f4);",
+    background: `url(${img})`,
     paddingBottom: "60px",
   },
   nav: {
